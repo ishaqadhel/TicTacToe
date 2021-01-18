@@ -20,8 +20,6 @@ import java.awt.Font;
 public class Games extends JFrame {
 
 	private JPanel contentPane;
-
-
 	
 	private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
@@ -38,7 +36,6 @@ public class Games extends JFrame {
 	private String startGame = "X";
     private int xCount = 0;
     private int oCount = 0;
-    private int moveCounter = 0;
     private JLabel TTTBackground;
     private JLabel lblPlayer2;
 
@@ -63,7 +60,9 @@ public class Games extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Games() {
+	public Games(String Player1, String Player2) {
+		
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 525);
 		contentPane = new JPanel();
@@ -211,7 +210,8 @@ public class Games extends JFrame {
 		contentPane.add(panel1);
 		panel1.setLayout(null);
 		
-		JLabel lblPlayer1 = new JLabel("Player 1 : ");
+//		JLabel lblPlayer1 = new JLabel("Player 1 : ");
+		JLabel lblPlayer1 = new JLabel(Player1 + " : ");
 		lblPlayer1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPlayer1.setForeground(Color.WHITE);
 		lblPlayer1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -241,7 +241,8 @@ public class Games extends JFrame {
 		score2.setOpaque(true);
 		panel2.add(score2);
 		
-		lblPlayer2 = new JLabel("Player 2 : ");
+//		lblPlayer2 = new JLabel("Player 2 : ");
+		lblPlayer2 = new JLabel(Player2 + " : ");
 		lblPlayer2.setForeground(Color.WHITE);
 		lblPlayer2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPlayer2.setHorizontalAlignment(SwingConstants.CENTER);

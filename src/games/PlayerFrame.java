@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JTextPane;
@@ -29,6 +30,7 @@ public class PlayerFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public PlayerFrame() {
+		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 525);
@@ -106,10 +108,18 @@ public class PlayerFrame extends JFrame {
 		JButton Play = new JButton("Play");
 		Play.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Games NewGames = new Games();
-				NewGames.setVisible(true);
-						}
+				if ( ProfilePlayer1Name.getText().trim().length() == 0 && ProfilePlayer2Name.getText().trim().length() == 0 )
+				{
+					JFrame frameWarning = new JFrame("warning");
+					JOptionPane.showConfirmDialog(frameWarning,"Player Name Can't be Null", "Tic Tac Toe", JOptionPane.CLOSED_OPTION);
+				}
+				else
+				{
+					dispose();
+					Games NewGames = new Games(ProfilePlayer1Name.getText(), ProfilePlayer2Name.getText());
+					NewGames.setVisible(true);
+				}
+			}
 		});
 		Play.setForeground(Color.WHITE);
 		Play.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -121,5 +131,7 @@ public class PlayerFrame extends JFrame {
 		TTTBackground.setIcon(new ImageIcon(PlayerFrame.class.getResource("/games/rsz_1610982588607.png")));
 		TTTBackground.setBounds(0, 0, 700, 500);
 		contentPane.add(TTTBackground);
+		
+		
 	}
 }
