@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
@@ -62,6 +64,8 @@ public class Games extends JFrame {
 	 */
 	public Games(String Player1, String Player2) {
 		
+		setTitle("Tic Tac Toe");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/games/icon2.png")));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 525);
