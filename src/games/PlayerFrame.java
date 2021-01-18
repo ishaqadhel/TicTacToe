@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,6 +32,8 @@ public class PlayerFrame extends JFrame {
 	 */
 	public PlayerFrame() {
 		
+		setTitle("Tic Tac Toe");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/games/icon2.png")));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 525);

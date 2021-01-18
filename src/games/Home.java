@@ -21,6 +21,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class Home extends JFrame {
 	
@@ -33,6 +34,8 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home() {
+		setTitle("Tic Tac Toe");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/games/icon2.png")));
 		
 		try{
 			AladinFont = Font.createFont(Font.TRUETYPE_FONT, new File("Aladin-Regular.ttf")).deriveFont(30f);
