@@ -237,7 +237,7 @@ public class GamesFrame extends JFrame {
 		score2 = new JLabel("0");
 		score2.setBackground(Color.WHITE);
 		score2.setHorizontalAlignment(SwingConstants.CENTER);
-		score2.setFont(new Font("Tahoma", Font.BOLD, 10));
+		score2.setFont(new Font("Tahoma", Font.BOLD, 50));
 		score2.setBounds(0, 65, 150, 75);
 		score2.setOpaque(true);
 		panel2.add(score2);
