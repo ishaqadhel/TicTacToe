@@ -12,26 +12,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class Games extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Games frame = new Games();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 	
 	private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
@@ -48,6 +38,9 @@ public class Games extends JFrame {
 	private String startGame = "X";
     private int xCount = 0;
     private int oCount = 0;
+    private int moveCounter = 0;
+    private JLabel TTTBackground;
+    private JLabel lblPlayer2;
 
     private void gameScore()
     {
@@ -75,19 +68,22 @@ public class Games extends JFrame {
 		setBounds(100, 100, 705, 525);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(47, 79, 79));
+		contentPane.setOpaque(false);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		btn1 = new JButton("");
+	
 		btn1.setText(null);
 		btn1.setBackground(new Color(224, 90, 71));
+		btn1.setBounds(92, 86, 85, 85);
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btn1ActionPerformed();
 			}
 		});
-		btn1.setBounds(64, 85, 85, 82);
+
 		contentPane.add(btn1);
 		
 		btn2 = new JButton("");
@@ -98,7 +94,7 @@ public class Games extends JFrame {
 				btn2ActionPerformed();
 			}
 		});
-		btn2.setBounds(176, 85, 85, 82);
+		btn2.setBounds(204, 86, 85, 85);
 		contentPane.add(btn2);
 		
 		btn3 = new JButton("");
@@ -109,7 +105,7 @@ public class Games extends JFrame {
 				btn3ActionPerformed();
 			}
 		});
-		btn3.setBounds(290, 85, 85, 82);
+		btn3.setBounds(318, 86, 85, 85);
 		contentPane.add(btn3);
 		
 		btn4 = new JButton("");
@@ -120,7 +116,7 @@ public class Games extends JFrame {
 				btn4ActionPerformed();
 			}
 		});
-		btn4.setBounds(64, 188, 85, 82);
+		btn4.setBounds(92, 189, 85, 85);
 		contentPane.add(btn4);
 		
 		btn5 = new JButton("");
@@ -131,7 +127,7 @@ public class Games extends JFrame {
 				btn5ActionPerformed();
 			}
 		});
-		btn5.setBounds(176, 188, 85, 82);
+		btn5.setBounds(204, 189, 85, 85);
 		contentPane.add(btn5);
 		
 		btn6 = new JButton("");
@@ -142,7 +138,7 @@ public class Games extends JFrame {
 				btn6ActionPerformed();
 			}
 		});
-		btn6.setBounds(290, 188, 85, 82);
+		btn6.setBounds(318, 189, 85, 85);
 		contentPane.add(btn6);
 		
 		btn7 = new JButton("");
@@ -153,7 +149,7 @@ public class Games extends JFrame {
 				btn7ActionPerformed();
 			}
 		});
-		btn7.setBounds(64, 291, 85, 82);
+		btn7.setBounds(92, 292, 85, 85);
 		contentPane.add(btn7);
 		
 		btn8 = new JButton("");
@@ -164,7 +160,7 @@ public class Games extends JFrame {
 				btn8ActionPerformed();
 			}
 		});
-		btn8.setBounds(176, 291, 85, 82);
+		btn8.setBounds(204, 292, 85, 85);
 		contentPane.add(btn8);
 		
 		btn9 = new JButton("");
@@ -175,10 +171,13 @@ public class Games extends JFrame {
 				btn9ActionPerformed();
 			}
 		});
-		btn9.setBounds(290, 291, 85, 82);
+		btn9.setBounds(318, 292, 85, 85);
 		contentPane.add(btn9);
 		
 		JButton btnPlayAgain = new JButton("Play Again");
+		btnPlayAgain.setForeground(Color.WHITE);
+		btnPlayAgain.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnPlayAgain.setBackground(new Color(224, 90, 71));
 		btnPlayAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				playAgain();
@@ -187,7 +186,10 @@ public class Games extends JFrame {
 		btnPlayAgain.setBounds(176, 410, 131, 34);
 		contentPane.add(btnPlayAgain);
 		
-		JButton btnExit = new JButton("exit");
+		JButton btnExit = new JButton("Exit");
+		btnExit.setForeground(Color.WHITE);
+		btnExit.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnExit.setBackground(new Color(224, 90, 71));
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame frame = new JFrame("exit");
@@ -201,38 +203,75 @@ public class Games extends JFrame {
 		btnExit.setBounds(336, 410, 131, 34);
 		contentPane.add(btnExit);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(470, 85, 167, 140);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel panel1 = new JPanel();
+		panel1.setForeground(Color.WHITE);
+		panel1.setBackground(new Color(224, 90, 71));
+		panel1.setOpaque(true);
+		panel1.setBounds(445, 86, 150, 137);
+		contentPane.add(panel1);
+		panel1.setLayout(null);
 		
-		JLabel lblPlayer = new JLabel("Player 1 : ");
-		lblPlayer.setBounds(49, 12, 70, 15);
-		panel.add(lblPlayer);
+		JLabel lblPlayer1 = new JLabel("Player 1 : ");
+		lblPlayer1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblPlayer1.setForeground(Color.WHITE);
+		lblPlayer1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPlayer1.setBounds(0, 0, 150, 50);
+		panel1.add(lblPlayer1);
 		
 		score1 = new JLabel("0");
-		score1.setBounds(49, 66, 70, 15);
-		panel.add(score1);
+		score1.setBackground(Color.WHITE);
+		score1.setFont(new Font("Tahoma", Font.BOLD, 50));
+		score1.setHorizontalAlignment(SwingConstants.CENTER);
+		score1.setBounds(0, 61, 150, 75);
+		score1.setOpaque(true);
+		panel1.add(score1);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(470, 247, 167, 140);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JLabel lblPlayer_1 = new JLabel("Player 2 : ");
-		lblPlayer_1.setBounds(52, 12, 70, 15);
-		panel_1.add(lblPlayer_1);
+		JPanel panel2 = new JPanel();
+		panel2.setBounds(445, 237, 150, 140);
+		panel2.setBackground(new Color(224, 90, 71));
+		panel2.setOpaque(true);
+		contentPane.add(panel2);
+		panel2.setLayout(null);
 		
 		score2 = new JLabel("0");
-		score2.setBounds(66, 64, 70, 15);
-		panel_1.add(score2);
+		score2.setBackground(Color.WHITE);
+		score2.setHorizontalAlignment(SwingConstants.CENTER);
+		score2.setFont(new Font("Tahoma", Font.BOLD, 50));
+		score2.setBounds(0, 65, 150, 75);
+		score2.setOpaque(true);
+		panel2.add(score2);
+		
+		lblPlayer2 = new JLabel("Player 2 : ");
+		lblPlayer2.setForeground(Color.WHITE);
+		lblPlayer2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblPlayer2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPlayer2.setBounds(0, 0, 150, 50);
+		panel2.add(lblPlayer2);
+		
+		TTTBackground = new JLabel("New label");
+		TTTBackground.setIcon(new ImageIcon(Games.class.getResource("/games/rsz_1610982588607.png")));
+		TTTBackground.setBounds(0, 0, 700, 500);
+		contentPane.add(TTTBackground);
 	}
 	
 	public void btn1ActionPerformed()
 	{
+	
 		if(btn1.getText() == null)
 		{
+			
 			btn1.setText(startGame);
+			btn1.setFont(new Font("Tahoma", Font.BOLD, -5));
+			btn1.setHideActionText(true);
+			if(startGame=="X")
+			{
+				btn1.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn1.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
+
 	        
 	        if(startGame.equalsIgnoreCase("X"))
 	        {
@@ -242,6 +281,7 @@ public class Games extends JFrame {
 	        {
 	            btn1.setForeground(Color.MAGENTA);
 	        }
+	        
 	        choosePlayer();
 	        findResult();
 		}		
@@ -251,6 +291,17 @@ public class Games extends JFrame {
 	{
 		if(btn2.getText() == null)
 		{
+			btn2.setText(startGame);
+			btn2.setFont(new Font("Tahoma", Font.BOLD, -5));
+			if(startGame=="X")
+			{
+				btn2.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn2.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
+			
 			btn2.setText(startGame);
 	        
 	        if(startGame.equalsIgnoreCase("X"))
@@ -271,6 +322,16 @@ public class Games extends JFrame {
 		if(btn3.getText() == null)
 		{
 			btn3.setText(startGame);
+			btn3.setFont(new Font("Tahoma", Font.BOLD, -5));
+			btn3.setText(startGame);
+			if(startGame=="X")
+			{
+				btn3.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn3.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
 	        
 	        if(startGame.equalsIgnoreCase("X"))
 	        {
@@ -289,6 +350,16 @@ public class Games extends JFrame {
 	{
 		if(btn4.getText() == null)
 		{
+			if(startGame=="X")
+			{
+				btn4.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn4.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
+			btn4.setText(startGame);
+			btn4.setFont(new Font("Tahoma", Font.BOLD, -5));
 			btn4.setText(startGame);
 	        
 	        if(startGame.equalsIgnoreCase("X"))
@@ -309,7 +380,17 @@ public class Games extends JFrame {
 		if(btn5.getText() == null)
 		{
 			btn5.setText(startGame);
+			btn5.setFont(new Font("Tahoma", Font.BOLD, -5));
+			btn5.setText(startGame);
 	        
+			if(startGame=="X")
+			{
+				btn5.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn5.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
 	        if(startGame.equalsIgnoreCase("X"))
 	        {
 	           btn5.setForeground(new Color(33, 66, 82));
@@ -328,7 +409,17 @@ public class Games extends JFrame {
 		if(btn6.getText() == null)
 		{
 			btn6.setText(startGame);
+			btn6.setFont(new Font("Tahoma", Font.BOLD, -5));
+			btn6.setText(startGame);
 	        
+			if(startGame=="X")
+			{
+				btn6.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn6.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
 	        if(startGame.equalsIgnoreCase("X"))
 	        {
 	           btn6.setForeground(new Color(33, 66, 82));
@@ -347,7 +438,17 @@ public class Games extends JFrame {
 		if(btn7.getText() == null)
 		{
 			btn7.setText(startGame);
+			btn7.setFont(new Font("Tahoma", Font.BOLD, -5));
+			btn7.setText(startGame);
 	        
+			if(startGame=="X")
+			{
+				btn7.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn7.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
 	        if(startGame.equalsIgnoreCase("X"))
 	        {
 	           btn7.setForeground(new Color(33, 66, 82));
@@ -365,6 +466,16 @@ public class Games extends JFrame {
 	{
 		if(btn8.getText() == null)
 		{
+			if(startGame=="X")
+			{
+				btn8.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn8.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
+			btn8.setText(startGame);
+			btn8.setFont(new Font("Tahoma", Font.BOLD, -5));
 			btn8.setText(startGame);
 	        
 	        if(startGame.equalsIgnoreCase("X"))
@@ -384,6 +495,16 @@ public class Games extends JFrame {
 	{
 		if(btn9.getText() == null)
 		{
+			if(startGame=="X")
+			{
+				btn9.setIcon(new ImageIcon(Games.class.getResource("/games/cross.png")));
+			}
+			else
+			{
+				btn9.setIcon(new ImageIcon(Games.class.getResource("/games/circle.png")));
+			}
+			btn9.setText(startGame);
+			btn9.setFont(new Font("Tahoma", Font.BOLD, -5));
 			btn9.setText(startGame);
 	        
 	        if(startGame.equalsIgnoreCase("X"))
@@ -425,7 +546,7 @@ public class Games extends JFrame {
             playAgain();
         }
         
-        if(b4 == ("X") && b5 ==("X") && b6 == ("X"))
+        else if(b4 == ("X") && b5 ==("X") && b6 == ("X"))
         {
             xCount++;
             gameScore();
@@ -437,7 +558,7 @@ public class Games extends JFrame {
             playAgain();
         }
          
-        if(b7 == ("X") && b8 ==("X") && b9 == ("X"))
+        else if(b7 == ("X") && b8 ==("X") && b9 == ("X"))
         {
             xCount++;
             gameScore();
@@ -449,7 +570,7 @@ public class Games extends JFrame {
             playAgain();
         }
         
-        if(b1 == ("X") && b4 ==("X") && b7 == ("X"))
+        else if(b1 == ("X") && b4 ==("X") && b7 == ("X"))
         {
             xCount++;
             gameScore();
@@ -461,7 +582,7 @@ public class Games extends JFrame {
             playAgain();
         }
         
-        if(b2 == ("X") && b5 ==("X") && b8 == ("X"))
+        else if(b2 == ("X") && b5 ==("X") && b8 == ("X"))
         {
             xCount++;
             gameScore();
@@ -472,7 +593,7 @@ public class Games extends JFrame {
             JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
             playAgain();
         }
-        if(b3 == ("X") && b6 ==("X") && b9 == ("X"))
+        else if(b3 == ("X") && b6 ==("X") && b9 == ("X"))
         {
             xCount++;
             gameScore();
@@ -485,7 +606,7 @@ public class Games extends JFrame {
         }
         
         
-        if(b1 == ("X") && b5 ==("X") && b9 == ("X"))
+        else if(b1 == ("X") && b5 ==("X") && b9 == ("X"))
         {
             xCount++;
             gameScore();
@@ -497,7 +618,7 @@ public class Games extends JFrame {
             playAgain();
         }
         
-        if(b3 == ("X") && b5 ==("X") && b7 == ("X"))
+        else if(b3 == ("X") && b5 ==("X") && b7 == ("X"))
         {
             xCount++;
             gameScore();
@@ -512,7 +633,7 @@ public class Games extends JFrame {
 // PLAYER O CODING
         
         
-        if(b1 == ("O") && b2 ==("O") && b3 == ("O"))
+        else if(b1 == ("O") && b2 ==("O") && b3 == ("O"))
         {
             oCount++;
             gameScore();
@@ -525,7 +646,7 @@ public class Games extends JFrame {
             
         }
         
-        if(b4 == ("O") && b5 ==("O") && b6 == ("O"))
+        else if(b4 == ("O") && b5 ==("O") && b6 == ("O"))
         {
             oCount++;
             gameScore();
@@ -537,7 +658,7 @@ public class Games extends JFrame {
             playAgain();
         }
          
-        if(b7 == ("O") && b8 ==("O") && b9 == ("O"))
+        else if(b7 == ("O") && b8 ==("O") && b9 == ("O"))
         {
             oCount++;
             gameScore();
@@ -549,7 +670,7 @@ public class Games extends JFrame {
             playAgain();
         }
         
-        if(b1 == ("O") && b4 ==("O") && b7 == ("O"))
+        else if(b1 == ("O") && b4 ==("O") && b7 == ("O"))
         {
             oCount++;
             gameScore();
@@ -561,7 +682,7 @@ public class Games extends JFrame {
             playAgain();
         }
         
-        if(b2 == ("O") && b5 ==("O") && b8 == ("O"))
+        else if(b2 == ("O") && b5 ==("O") && b8 == ("O"))
         {
             oCount++;
             gameScore();
@@ -572,7 +693,7 @@ public class Games extends JFrame {
             JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
             playAgain();
         }
-        if(b3 == ("O") && b6 ==("O") && b9 == ("O"))
+        else if(b3 == ("O") && b6 ==("O") && b9 == ("O"))
         {
             oCount++;
             gameScore();
@@ -585,7 +706,7 @@ public class Games extends JFrame {
         }
         
         
-        if(b1 == ("O") && b5 ==("O") && b9 == ("O"))
+        else if(b1 == ("O") && b5 ==("O") && b9 == ("O"))
         {
             oCount++;
             gameScore();
@@ -597,7 +718,7 @@ public class Games extends JFrame {
             playAgain();
         }
         
-        if(b3 == ("O") && b5 ==("O") && b7 == ("O"))
+        else if(b3 == ("O") && b5 ==("O") && b7 == ("O"))
         {
             oCount++;
             gameScore();
@@ -627,6 +748,17 @@ public class Games extends JFrame {
 		btn7.setText(null);
 		btn8.setText(null);
 		btn9.setText(null);
+		
+
+		btn1.setIcon(null);
+		btn2.setIcon(null);
+		btn3.setIcon(null);
+		btn4.setIcon(null);
+		btn5.setIcon(null);
+		btn6.setIcon(null);
+		btn7.setIcon(null);
+		btn8.setIcon(null);
+		btn9.setIcon(null);
 		
 		btn1.setBackground(new Color(224, 90, 71));
 		btn2.setBackground(new Color(224, 90, 71));
