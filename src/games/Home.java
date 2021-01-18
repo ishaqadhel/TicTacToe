@@ -23,6 +23,8 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class Home extends JFrame {
+	
+	
 
 	private JPanel contentPane;
 	Font AladinFont;
@@ -56,15 +58,13 @@ public class Home extends JFrame {
 		
 		JButton btnNewButton = new JButton("Play");
 		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnNewButton.setBackground(new Color(224, 90, 71));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PlayerFrame frame = new PlayerFrame();
-				frame.setVisible(false);
 				dispose();
-				PlayerFrame pFrame = new PlayerFrame();
-				pFrame.setVisible(true);
+				PlayerFrame Frame = new PlayerFrame();
+				Frame.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(90, 264, 100, 40);
@@ -72,7 +72,7 @@ public class Home extends JFrame {
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.setForeground(Color.WHITE);
-		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnExit.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnExit.setBackground(new Color(224, 90, 71));
 		btnExit.setBounds(205, 264, 100, 40);
 		panel.add(btnExit);
