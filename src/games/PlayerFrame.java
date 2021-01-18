@@ -104,6 +104,13 @@ public class PlayerFrame extends JFrame {
 		contentPane.add(BackToMain);
 		
 		JButton Play = new JButton("Play");
+		Play.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				Games NewGames = new Games();
+				NewGames.setVisible(true);
+						}
+		});
 		Play.setForeground(Color.WHITE);
 		Play.setFont(new Font("Tahoma", Font.BOLD, 15));
 		Play.setBackground(new Color(224, 90, 71));
