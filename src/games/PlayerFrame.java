@@ -116,7 +116,7 @@ public class PlayerFrame extends JFrame {
 				else
 				{
 					dispose();
-					Games NewGames = new Games(ProfilePlayer1Name.getText(), ProfilePlayer2Name.getText());
+					GamesFrame NewGames = new GamesFrame(ProfilePlayer1Name.getText(), ProfilePlayer2Name.getText());
 					NewGames.setVisible(true);
 				}
 			}
