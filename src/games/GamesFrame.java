@@ -37,6 +37,7 @@ public class GamesFrame extends JFrame {
 
     Score xCount = new Score(0);
     Score oCount = new Score(0);
+    
     private JLabel TTTBackground;
     private JLabel lblPlayer2;
 
@@ -80,7 +81,7 @@ public class GamesFrame extends JFrame {
 		btn1.setBounds(92, 86, 85, 85);
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn1ActionPerformed();
+				btnActionPerformed(btn1);
 			}
 		});
 
@@ -91,7 +92,7 @@ public class GamesFrame extends JFrame {
 		btn2.setBackground(new Color(224, 90, 71));
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn2ActionPerformed();
+				btnActionPerformed(btn2);
 			}
 		});
 		btn2.setBounds(204, 86, 85, 85);
@@ -102,7 +103,7 @@ public class GamesFrame extends JFrame {
 		btn3.setBackground(new Color(224, 90, 71));
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn3ActionPerformed();
+				btnActionPerformed(btn3);
 			}
 		});
 		btn3.setBounds(318, 86, 85, 85);
@@ -113,7 +114,7 @@ public class GamesFrame extends JFrame {
 		btn4.setBackground(new Color(224, 90, 71));
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn4ActionPerformed();
+				btnActionPerformed(btn4);
 			}
 		});
 		btn4.setBounds(92, 189, 85, 85);
@@ -124,7 +125,7 @@ public class GamesFrame extends JFrame {
 		btn5.setBackground(new Color(224, 90, 71));
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn5ActionPerformed();
+				btnActionPerformed(btn5);
 			}
 		});
 		btn5.setBounds(204, 189, 85, 85);
@@ -135,7 +136,7 @@ public class GamesFrame extends JFrame {
 		btn6.setBackground(new Color(224, 90, 71));
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn6ActionPerformed();
+				btnActionPerformed(btn6);
 			}
 		});
 		btn6.setBounds(318, 189, 85, 85);
@@ -146,7 +147,7 @@ public class GamesFrame extends JFrame {
 		btn7.setBackground(new Color(224, 90, 71));
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn7ActionPerformed();
+				btnActionPerformed(btn7);
 			}
 		});
 		btn7.setBounds(92, 292, 85, 85);
@@ -157,7 +158,7 @@ public class GamesFrame extends JFrame {
 		btn8.setBackground(new Color(224, 90, 71));
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn8ActionPerformed();
+				btnActionPerformed(btn8);
 			}
 		});
 		btn8.setBounds(204, 292, 85, 85);
@@ -168,7 +169,7 @@ public class GamesFrame extends JFrame {
 		btn9.setBackground(new Color(224, 90, 71));
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				btn9ActionPerformed();
+				btnActionPerformed(btn9);
 			}
 		});
 		btn9.setBounds(318, 292, 85, 85);
@@ -180,7 +181,12 @@ public class GamesFrame extends JFrame {
 		btnPlayAgain.setBackground(new Color(224, 90, 71));
 		btnPlayAgain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				playAgain();
+				JFrame frame = new JFrame("warning");
+				
+				if(JOptionPane.showConfirmDialog(frame, "Are you sure want to restart game?", "Tic Tac Toe", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION)
+				{
+					playAgain();
+				}
 			}
 		});
 		btnPlayAgain.setBounds(176, 410, 131, 34);
@@ -256,270 +262,37 @@ public class GamesFrame extends JFrame {
 		contentPane.add(TTTBackground);
 	}
 	
-	public void btn1ActionPerformed()
+	public void btnActionPerformed(javax.swing.JButton btn)
 	{
 	
-		if(btn1.getText() == null)
+		if(btn.getText() == null)
 		{
 			
-			btn1.setText(startGame);
-			btn1.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn1.setHideActionText(true);
+			btn.setText(startGame);
+			btn.setFont(new Font("Tahoma", Font.BOLD, -5));
+			btn.setHideActionText(true);
 			if(startGame=="X")
 			{
-				btn1.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
+				btn.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
 			}
 			else
 			{
-				btn1.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
+				btn.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
 			}
 
 	        
 	        if(startGame.equalsIgnoreCase("X"))
 	        {
-	           btn1.setForeground(new Color(33, 66, 82));
+	           btn.setForeground(new Color(33, 66, 82));
 	        }
 	        else
 	        {
-	            btn1.setForeground(Color.MAGENTA);
+	            btn.setForeground(Color.MAGENTA);
 	        }
 	        
-	        choosePlayer();
-	        findResult();
+	        this.choosePlayer();
+	        this.findResult();
 		}		
-	}
-	
-	public void btn2ActionPerformed()
-	{
-		if(btn2.getText() == null)
-		{
-			btn2.setText(startGame);
-			btn2.setFont(new Font("Tahoma", Font.BOLD, -5));
-			if(startGame=="X")
-			{
-				btn2.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn2.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-			
-			btn2.setText(startGame);
-	        
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn2.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn2.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
-	}
-	
-	public void btn3ActionPerformed()
-	{
-		if(btn3.getText() == null)
-		{
-			btn3.setText(startGame);
-			btn3.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn3.setText(startGame);
-			if(startGame=="X")
-			{
-				btn3.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn3.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-	        
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn3.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn3.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
-	}
-	
-	public void btn4ActionPerformed()
-	{
-		if(btn4.getText() == null)
-		{
-			if(startGame=="X")
-			{
-				btn4.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn4.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-			btn4.setText(startGame);
-			btn4.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn4.setText(startGame);
-	        
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn4.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn4.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
-	}
-	
-	public void btn5ActionPerformed()
-	{
-		if(btn5.getText() == null)
-		{
-			btn5.setText(startGame);
-			btn5.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn5.setText(startGame);
-	        
-			if(startGame=="X")
-			{
-				btn5.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn5.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn5.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn5.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
-	}
-	
-	public void btn6ActionPerformed()
-	{
-		if(btn6.getText() == null)
-		{
-			btn6.setText(startGame);
-			btn6.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn6.setText(startGame);
-	        
-			if(startGame=="X")
-			{
-				btn6.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn6.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn6.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn6.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
-	}
-	
-	public void btn7ActionPerformed()
-	{
-		if(btn7.getText() == null)
-		{
-			btn7.setText(startGame);
-			btn7.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn7.setText(startGame);
-	        
-			if(startGame=="X")
-			{
-				btn7.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn7.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn7.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn7.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
-	}
-	
-	public void btn8ActionPerformed()
-	{
-		if(btn8.getText() == null)
-		{
-			if(startGame=="X")
-			{
-				btn8.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn8.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-			btn8.setText(startGame);
-			btn8.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn8.setText(startGame);
-	        
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn8.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn8.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
-	}
-	
-	public void btn9ActionPerformed()
-	{
-		if(btn9.getText() == null)
-		{
-			if(startGame=="X")
-			{
-				btn9.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
-			}
-			else
-			{
-				btn9.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
-			}
-			btn9.setText(startGame);
-			btn9.setFont(new Font("Tahoma", Font.BOLD, -5));
-			btn9.setText(startGame);
-	        
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn9.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn9.setForeground(Color.MAGENTA);
-	        }
-	        choosePlayer();
-	        findResult();
-		}
 	}
 	
 	public void findResult()
@@ -534,209 +307,117 @@ public class GamesFrame extends JFrame {
 		String b8 = btn8.getText();
 		String b9 = btn9.getText();
 		
-// PLAYER X CODING
+		// PLAYER X CODING
         
         if(b1 == ("X") && b2 ==("X") && b3 == ("X"))
         {
-            xCount.addScore(1);
-            gameScore();
-            
-            btn1.setBackground(new Color(246, 192, 101));
-            btn2.setBackground(new Color(246, 192, 101));
-            btn3.setBackground(new Color(246, 192, 101));
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn1, btn2, btn3);
         }
         
         else if(b4 == ("X") && b5 ==("X") && b6 == ("X"))
         {
-        	xCount.addScore(1);
-            gameScore();
-            
-            btn4.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn6.setBackground(new Color(246, 192, 101));
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn4, btn5, btn6);
         }
          
         else if(b7 == ("X") && b8 ==("X") && b9 == ("X"))
         {
-        	xCount.addScore(1);
-            gameScore();
-            
-            btn7.setBackground(new Color(246, 192, 101));
-            btn8.setBackground(new Color(246, 192, 101));
-            btn9.setBackground(new Color(246, 192, 101));
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn7, btn8, btn9);
         }
         
         else if(b1 == ("X") && b4 ==("X") && b7 == ("X"))
         {
-        	xCount.addScore(1);
-            gameScore();
-            
-            btn1.setBackground(new Color(246, 192, 101));
-            btn4.setBackground(new Color(246, 192, 101));
-            btn7.setBackground(new Color(246, 192, 101)); 
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn1, btn4, btn7);
         }
         
         else if(b2 == ("X") && b5 ==("X") && b8 == ("X"))
         {
-        	xCount.addScore(1);
-            gameScore();
-            
-            btn2.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn8.setBackground(new Color(246, 192, 101));  
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn2, btn5, btn8);
         }
         else if(b3 == ("X") && b6 ==("X") && b9 == ("X"))
         {
-        	xCount.addScore(1);
-            gameScore();
-            
-            btn3.setBackground(new Color(246, 192, 101));
-            btn6.setBackground(new Color(246, 192, 101));
-            btn9.setBackground(new Color(246, 192, 101));     
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn3, btn6, btn9);
         }
         
         
         else if(b1 == ("X") && b5 ==("X") && b9 == ("X"))
         {
-        	xCount.addScore(1);
-            gameScore();
-            
-            btn1.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn9.setBackground(new Color(246, 192, 101)); 
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn1, btn5, btn9);
         }
         
         else if(b3 == ("X") && b5 ==("X") && b7 == ("X"))
         {
-        	xCount.addScore(1);
-            gameScore();
-            
-            btn3.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn7.setBackground(new Color(246, 192, 101));
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(xCount, btn3, btn5, btn7);
         }
         
-// PLAYER O CODING
-        
+        // PLAYER O CODING
         
         else if(b1 == ("O") && b2 ==("O") && b3 == ("O"))
         {
-            oCount.addScore(1);
-            gameScore();
-            
-            btn1.setBackground(new Color(246, 192, 101));
-            btn2.setBackground(new Color(246, 192, 101));
-            btn3.setBackground(new Color(246, 192, 101));
-            JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(oCount, btn1, btn2, btn3);
             
         }
         
         else if(b4 == ("O") && b5 ==("O") && b6 == ("O"))
         {
-        	oCount.addScore(1);
-            gameScore();
-            
-            btn4.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn6.setBackground(new Color(246, 192, 101)); 
-            JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(oCount, btn4, btn5, btn6);
         }
          
         else if(b7 == ("O") && b8 ==("O") && b9 == ("O"))
         {
-        	oCount.addScore(1);
-            gameScore();
-            
-            btn7.setBackground(new Color(246, 192, 101));
-            btn8.setBackground(new Color(246, 192, 101));
-            btn9.setBackground(new Color(246, 192, 101));  
-            JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(oCount, btn7, btn8, btn9);
         }
         
         else if(b1 == ("O") && b4 ==("O") && b7 == ("O"))
         {
-        	oCount.addScore(1);
-            gameScore();
-            
-            btn1.setBackground(new Color(246, 192, 101));
-            btn4.setBackground(new Color(246, 192, 101));
-            btn7.setBackground(new Color(246, 192, 101));
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(oCount, btn1, btn4, btn7);
         }
         
         else if(b2 == ("O") && b5 ==("O") && b8 == ("O"))
         {
-        	oCount.addScore(1);
-            gameScore();
-            
-            btn2.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn8.setBackground(new Color(246, 192, 101));  
-            JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
-        }
-        else if(b3 == ("O") && b6 ==("O") && b9 == ("O"))
-        {
-        	oCount.addScore(1);
-            gameScore();
-            
-            btn3.setBackground(new Color(246, 192, 101));
-            btn6.setBackground(new Color(246, 192, 101));
-            btn9.setBackground(new Color(246, 192, 101));   
-            JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(oCount, btn2, btn5, btn8);
         }
         
+        else if(b3 == ("O") && b6 ==("O") && b9 == ("O"))
+        {
+        	this.checkWinner(oCount, btn3, btn6, btn9);
+        }   
         
         else if(b1 == ("O") && b5 ==("O") && b9 == ("O"))
         {
-        	oCount.addScore(1);
-            gameScore();
-            
-            btn1.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn9.setBackground(new Color(246, 192, 101));  
-            JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(oCount, btn1, btn5, btn9);
         }
         
         else if(b3 == ("O") && b5 ==("O") && b7 == ("O"))
         {
-        	oCount.addScore(1);
-            gameScore();
-            
-            btn3.setBackground(new Color(246, 192, 101));
-            btn5.setBackground(new Color(246, 192, 101));
-            btn7.setBackground(new Color(246, 192, 101));   
-            JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+        	this.checkWinner(oCount, btn3, btn5, btn7);
         }
         
         else if(b1 != null && b2 != null && b3 != null && b4 != null && b5 != null && b6 != null && b7 != null && b8 != null && b9 != null)
         {
         	JOptionPane.showMessageDialog(this, "Draw Match", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
-            playAgain();
+            this.playAgain();
         }
+	}
+	
+	public void checkWinner(Score s, javax.swing.JButton firstButton, javax.swing.JButton secondButton, javax.swing.JButton thirdButton)
+	{
+		firstButton.setBackground(new Color(246, 192, 101));
+        secondButton.setBackground(new Color(246, 192, 101));
+        thirdButton.setBackground(new Color(246, 192, 101));
+        
+		s.addScore(1);
+        this.gameScore();
+        
+        if (firstButton.getText() == "X")
+        {
+        	JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+        	JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+        }
+           
+        this.playAgain();
 	}
 	
 	public void playAgain()
@@ -750,7 +431,6 @@ public class GamesFrame extends JFrame {
 		btn7.setText(null);
 		btn8.setText(null);
 		btn9.setText(null);
-		
 
 		btn1.setIcon(null);
 		btn2.setIcon(null);
@@ -772,5 +452,4 @@ public class GamesFrame extends JFrame {
 		btn8.setBackground(new Color(224, 90, 71));
 		btn9.setBackground(new Color(224, 90, 71));
 	}
-
 }
