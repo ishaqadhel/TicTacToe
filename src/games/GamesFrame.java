@@ -33,7 +33,7 @@ public class GamesFrame extends JFrame {
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
     
-    
+//    JButton[] btn = new JButton[9];
 	
 	private String startGame = "X";
     
@@ -61,7 +61,6 @@ public class GamesFrame extends JFrame {
             startGame = "X";
         }
     	TurnInfo.setText("Turn : " + startGame);
-    	
     }
     
 	/**
@@ -78,6 +77,13 @@ public class GamesFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+//		for(int i = 0; i < 9; i++)
+//		{
+//			btn[i] = new JButton("");
+//			btn[i].setText(null);
+//			btn[i].setBackground(new Color(224, 90, 71));
+//		}
 		
 		btn1 = new JButton("");
 	

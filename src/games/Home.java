@@ -37,15 +37,6 @@ public class Home extends JFrame {
 		setTitle("Tic Tac Toe");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/games/icon2.png")));
 		
-		try{
-			AladinFont = Font.createFont(Font.TRUETYPE_FONT, new File("Aladin-Regular.ttf")).deriveFont(30f);
-			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Aladin-Regular.ttf")));
-		}catch(IOException | FontFormatException e) {
-			
-		}
-		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 525);
 		contentPane = new JPanel();
