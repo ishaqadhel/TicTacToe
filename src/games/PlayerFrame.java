@@ -56,7 +56,7 @@ public class PlayerFrame extends JFrame {
 		Name2Title.setBounds(10, 129, 69, 32);
 		ProfilePlayer2.add(Name2Title);
 		
-		JLabel ProfilePlayer2Title = new JLabel("Profile Player 2\r\n");
+		JLabel ProfilePlayer2Title = new JLabel("Profile Player O");
 		ProfilePlayer2Title.setOpaque(true);
 		ProfilePlayer2Title.setHorizontalAlignment(SwingConstants.CENTER);
 		ProfilePlayer2Title.setForeground(Color.WHITE);
@@ -72,7 +72,7 @@ public class PlayerFrame extends JFrame {
 		ProfilePlayer1.setBounds(134, 81, 200, 229);
 		contentPane.add(ProfilePlayer1);
 		
-		JLabel ProfilePlayer1Title = new JLabel("Profile Player 1");
+		JLabel ProfilePlayer1Title = new JLabel("Profile Player X");
 		ProfilePlayer1Title.setLocation(0, 0);
 		ProfilePlayer1Title.setHorizontalAlignment(SwingConstants.CENTER);
 		ProfilePlayer1Title.setForeground(Color.WHITE);

@@ -32,6 +32,8 @@ public class GamesFrame extends JFrame {
     private javax.swing.JButton btn7;
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
+    
+    
 	
 	private String startGame = "X";
     
@@ -40,6 +42,7 @@ public class GamesFrame extends JFrame {
     
     private JLabel TTTBackground;
     private JLabel lblPlayer2;
+	JLabel TurnInfo = new JLabel("Turn : " + startGame);
 
     private void gameScore()
     {
@@ -57,6 +60,8 @@ public class GamesFrame extends JFrame {
         {
             startGame = "X";
         }
+    	TurnInfo.setText("Turn : " + startGame);
+    	
     }
     
 	/**
@@ -254,6 +259,14 @@ public class GamesFrame extends JFrame {
 		lblPlayer2.setBounds(0, 0, 150, 50);
 		panel2.add(lblPlayer2);
 		
+	
+		
+		TurnInfo.setForeground(Color.WHITE);
+		TurnInfo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		TurnInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		TurnInfo.setBounds(92, 31, 311, 44);
+		contentPane.add(TurnInfo);
+		
 		TTTBackground = new JLabel("New label");
 		TTTBackground.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/rsz_1610982588607.png")));
 		TTTBackground.setBounds(0, 0, 700, 500);
@@ -290,6 +303,8 @@ public class GamesFrame extends JFrame {
 	        {
 	            btn.setForeground(new Color(33, 66, 82));
 	        }
+	        
+	        
 	        
 	        this.choosePlayer();
 	        this.findResult();
