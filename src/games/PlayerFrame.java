@@ -31,7 +31,6 @@ public class PlayerFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public PlayerFrame() {
-		
 		setTitle("Tic Tac Toe");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/games/icon2.png")));
 		setResizable(false);
@@ -111,7 +110,7 @@ public class PlayerFrame extends JFrame {
 		JButton Play = new JButton("Play");
 		Play.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if ( ProfilePlayer1Name.getText().trim().length() == 0 && ProfilePlayer2Name.getText().trim().length() == 0 )
+				if ( ProfilePlayer1Name.getText().trim().length() == 0 || ProfilePlayer2Name.getText().trim().length() == 0 )
 				{
 					JFrame frameWarning = new JFrame("warning");
 					JOptionPane.showConfirmDialog(frameWarning,"Player Name Can't be Null", "Tic Tac Toe", JOptionPane.CLOSED_OPTION);
@@ -134,7 +133,5 @@ public class PlayerFrame extends JFrame {
 		TTTBackground.setIcon(new ImageIcon(PlayerFrame.class.getResource("/games/rsz_1610982588607.png")));
 		TTTBackground.setBounds(0, 0, 700, 500);
 		contentPane.add(TTTBackground);
-		
-		
 	}
 }

@@ -34,17 +34,17 @@ public class GamesFrame extends JFrame {
     private javax.swing.JButton btn9;
 	
 	private String startGame = "X";
-
-    Score xCount = new Score(0);
-    Score oCount = new Score(0);
+    
+    Human player1 = new Human(null, 0);
+    Human player2 = new Human(null, 0);
     
     private JLabel TTTBackground;
     private JLabel lblPlayer2;
 
     private void gameScore()
     {
-    	score1.setText(String.valueOf(xCount.getScore()));
-    	score2.setText(String.valueOf(oCount.getScore()));
+    	score1.setText(String.valueOf(player1.getScore()));
+    	score2.setText(String.valueOf(player2.getScore()));
     }
     
     private void choosePlayer()
@@ -216,9 +216,8 @@ public class GamesFrame extends JFrame {
 		panel1.setBounds(445, 86, 150, 137);
 		contentPane.add(panel1);
 		panel1.setLayout(null);
-		
-//		JLabel lblPlayer1 = new JLabel("Player 1 : ");
-		JLabel lblPlayer1 = new JLabel(Player1 + " : ");
+
+		JLabel lblPlayer1 = new JLabel(Player1 + " (X) : ");
 		lblPlayer1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPlayer1.setForeground(Color.WHITE);
 		lblPlayer1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -248,8 +247,7 @@ public class GamesFrame extends JFrame {
 		score2.setOpaque(true);
 		panel2.add(score2);
 		
-//		lblPlayer2 = new JLabel("Player 2 : ");
-		lblPlayer2 = new JLabel(Player2 + " : ");
+		lblPlayer2 = new JLabel(Player2 + " (O) : ");
 		lblPlayer2.setForeground(Color.WHITE);
 		lblPlayer2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblPlayer2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -260,6 +258,9 @@ public class GamesFrame extends JFrame {
 		TTTBackground.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/rsz_1610982588607.png")));
 		TTTBackground.setBounds(0, 0, 700, 500);
 		contentPane.add(TTTBackground);
+		
+		player1.setName(Player1);
+		player2.setName(Player2);
 	}
 	
 	public void btnActionPerformed(javax.swing.JButton btn)
@@ -287,7 +288,7 @@ public class GamesFrame extends JFrame {
 	        }
 	        else
 	        {
-	            btn.setForeground(Color.MAGENTA);
+	            btn.setForeground(new Color(33, 66, 82));
 	        }
 	        
 	        this.choosePlayer();
@@ -311,85 +312,85 @@ public class GamesFrame extends JFrame {
         
         if(b1 == ("X") && b2 ==("X") && b3 == ("X"))
         {
-        	this.checkWinner(xCount, btn1, btn2, btn3);
+        	this.checkWinner(player1, btn1, btn2, btn3);
         }
         
         else if(b4 == ("X") && b5 ==("X") && b6 == ("X"))
         {
-        	this.checkWinner(xCount, btn4, btn5, btn6);
+        	this.checkWinner(player1, btn4, btn5, btn6);
         }
          
         else if(b7 == ("X") && b8 ==("X") && b9 == ("X"))
         {
-        	this.checkWinner(xCount, btn7, btn8, btn9);
+        	this.checkWinner(player1, btn7, btn8, btn9);
         }
         
         else if(b1 == ("X") && b4 ==("X") && b7 == ("X"))
         {
-        	this.checkWinner(xCount, btn1, btn4, btn7);
+        	this.checkWinner(player1, btn1, btn4, btn7);
         }
         
         else if(b2 == ("X") && b5 ==("X") && b8 == ("X"))
         {
-        	this.checkWinner(xCount, btn2, btn5, btn8);
+        	this.checkWinner(player1, btn2, btn5, btn8);
         }
         else if(b3 == ("X") && b6 ==("X") && b9 == ("X"))
         {
-        	this.checkWinner(xCount, btn3, btn6, btn9);
+        	this.checkWinner(player1, btn3, btn6, btn9);
         }
         
         
         else if(b1 == ("X") && b5 ==("X") && b9 == ("X"))
         {
-        	this.checkWinner(xCount, btn1, btn5, btn9);
+        	this.checkWinner(player1, btn1, btn5, btn9);
         }
         
         else if(b3 == ("X") && b5 ==("X") && b7 == ("X"))
         {
-        	this.checkWinner(xCount, btn3, btn5, btn7);
+        	this.checkWinner(player1, btn3, btn5, btn7);
         }
         
         // PLAYER O CODING
         
         else if(b1 == ("O") && b2 ==("O") && b3 == ("O"))
         {
-        	this.checkWinner(oCount, btn1, btn2, btn3);
+        	this.checkWinner(player2, btn1, btn2, btn3);
             
         }
         
         else if(b4 == ("O") && b5 ==("O") && b6 == ("O"))
         {
-        	this.checkWinner(oCount, btn4, btn5, btn6);
+        	this.checkWinner(player2, btn4, btn5, btn6);
         }
          
         else if(b7 == ("O") && b8 ==("O") && b9 == ("O"))
         {
-        	this.checkWinner(oCount, btn7, btn8, btn9);
+        	this.checkWinner(player2, btn7, btn8, btn9);
         }
         
         else if(b1 == ("O") && b4 ==("O") && b7 == ("O"))
         {
-        	this.checkWinner(oCount, btn1, btn4, btn7);
+        	this.checkWinner(player2, btn1, btn4, btn7);
         }
         
         else if(b2 == ("O") && b5 ==("O") && b8 == ("O"))
         {
-        	this.checkWinner(oCount, btn2, btn5, btn8);
+        	this.checkWinner(player2, btn2, btn5, btn8);
         }
         
         else if(b3 == ("O") && b6 ==("O") && b9 == ("O"))
         {
-        	this.checkWinner(oCount, btn3, btn6, btn9);
+        	this.checkWinner(player2, btn3, btn6, btn9);
         }   
         
         else if(b1 == ("O") && b5 ==("O") && b9 == ("O"))
         {
-        	this.checkWinner(oCount, btn1, btn5, btn9);
+        	this.checkWinner(player2, btn1, btn5, btn9);
         }
         
         else if(b3 == ("O") && b5 ==("O") && b7 == ("O"))
         {
-        	this.checkWinner(oCount, btn3, btn5, btn7);
+        	this.checkWinner(player2, btn3, btn5, btn7);
         }
         
         else if(b1 != null && b2 != null && b3 != null && b4 != null && b5 != null && b6 != null && b7 != null && b8 != null && b9 != null)
@@ -399,22 +400,22 @@ public class GamesFrame extends JFrame {
         }
 	}
 	
-	public void checkWinner(Score s, javax.swing.JButton firstButton, javax.swing.JButton secondButton, javax.swing.JButton thirdButton)
+	public void checkWinner(Human h, javax.swing.JButton firstButton, javax.swing.JButton secondButton, javax.swing.JButton thirdButton)
 	{
 		firstButton.setBackground(new Color(246, 192, 101));
         secondButton.setBackground(new Color(246, 192, 101));
         thirdButton.setBackground(new Color(246, 192, 101));
         
-		s.addScore(1);
+		h.addScore(1);
         this.gameScore();
         
         if (firstButton.getText() == "X")
         {
-        	JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+        	JOptionPane.showMessageDialog(this, player1.getName() + " (X) wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
-        	JOptionPane.showMessageDialog(this, "Player O wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+        	JOptionPane.showMessageDialog(this, player2.getName() + " (O) wins", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
         }
            
         this.playAgain();
