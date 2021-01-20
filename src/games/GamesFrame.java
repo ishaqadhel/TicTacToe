@@ -18,22 +18,12 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 
 public class GamesFrame extends JFrame {
-
 	private JPanel contentPane;
 	
 	private javax.swing.JLabel score1;
     private javax.swing.JLabel score2;
-    private javax.swing.JButton btn1;
-    private javax.swing.JButton btn2;
-    private javax.swing.JButton btn3;
-    private javax.swing.JButton btn4;
-    private javax.swing.JButton btn5;
-    private javax.swing.JButton btn6;
-    private javax.swing.JButton btn7;
-    private javax.swing.JButton btn8;
-    private javax.swing.JButton btn9;
     
-//    JButton[] btn = new JButton[9];
+    JButton[] btn = new JButton[9];
 	
 	private String startGame = "X";
     
@@ -67,7 +57,6 @@ public class GamesFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public GamesFrame(String Player1, String Player2) {
-		
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 525);
@@ -78,113 +67,29 @@ public class GamesFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-//		for(int i = 0; i < 9; i++)
-//		{
-//			btn[i] = new JButton("");
-//			btn[i].setText(null);
-//			btn[i].setBackground(new Color(224, 90, 71));
-//		}
+		for(int i = 0; i < 9; i++)
+		{
+			btn[i] = new JButton("");
+			btn[i].setText(null);
+			btn[i].setBackground(new Color(224, 90, 71));
+			contentPane.add(btn[i]);
+			btn[i].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JButton buttonClicked = (JButton) arg0.getSource();
+					btnActionPerformed(buttonClicked);
+				}
+			});
+		}
 		
-		btn1 = new JButton("");
-	
-		btn1.setText(null);
-		btn1.setBackground(new Color(224, 90, 71));
-		btn1.setBounds(92, 86, 85, 85);
-		btn1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn1);
-			}
-		});
-
-		contentPane.add(btn1);
-		
-		btn2 = new JButton("");
-		btn2.setText(null);
-		btn2.setBackground(new Color(224, 90, 71));
-		btn2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn2);
-			}
-		});
-		btn2.setBounds(204, 86, 85, 85);
-		contentPane.add(btn2);
-		
-		btn3 = new JButton("");
-		btn3.setText(null);
-		btn3.setBackground(new Color(224, 90, 71));
-		btn3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn3);
-			}
-		});
-		btn3.setBounds(318, 86, 85, 85);
-		contentPane.add(btn3);
-		
-		btn4 = new JButton("");
-		btn4.setText(null);
-		btn4.setBackground(new Color(224, 90, 71));
-		btn4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn4);
-			}
-		});
-		btn4.setBounds(92, 189, 85, 85);
-		contentPane.add(btn4);
-		
-		btn5 = new JButton("");
-		btn5.setText(null);
-		btn5.setBackground(new Color(224, 90, 71));
-		btn5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn5);
-			}
-		});
-		btn5.setBounds(204, 189, 85, 85);
-		contentPane.add(btn5);
-		
-		btn6 = new JButton("");
-		btn6.setText(null);
-		btn6.setBackground(new Color(224, 90, 71));
-		btn6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn6);
-			}
-		});
-		btn6.setBounds(318, 189, 85, 85);
-		contentPane.add(btn6);
-		
-		btn7 = new JButton("");
-		btn7.setText(null);
-		btn7.setBackground(new Color(224, 90, 71));
-		btn7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn7);
-			}
-		});
-		btn7.setBounds(92, 292, 85, 85);
-		contentPane.add(btn7);
-		
-		btn8 = new JButton("");
-		btn8.setText(null);
-		btn8.setBackground(new Color(224, 90, 71));
-		btn8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn8);
-			}
-		});
-		btn8.setBounds(204, 292, 85, 85);
-		contentPane.add(btn8);
-		
-		btn9 = new JButton("");
-		btn9.setText(null);
-		btn9.setBackground(new Color(224, 90, 71));
-		btn9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnActionPerformed(btn9);
-			}
-		});
-		btn9.setBounds(318, 292, 85, 85);
-		contentPane.add(btn9);
+		btn[0].setBounds(92, 86, 85, 85);
+		btn[1].setBounds(204, 86, 85, 85);
+		btn[2].setBounds(318, 86, 85, 85);
+		btn[3].setBounds(92, 189, 85, 85);
+		btn[4].setBounds(204, 189, 85, 85);
+		btn[5].setBounds(318, 189, 85, 85);
+		btn[6].setBounds(92, 292, 85, 85);
+		btn[7].setBounds(204, 292, 85, 85);
+		btn[8].setBounds(318, 292, 85, 85);
 		
 		JButton btnPlayAgain = new JButton("Play Again");
 		btnPlayAgain.setForeground(Color.WHITE);
@@ -265,8 +170,6 @@ public class GamesFrame extends JFrame {
 		lblPlayer2.setBounds(0, 0, 150, 50);
 		panel2.add(lblPlayer2);
 		
-	
-		
 		TurnInfo.setForeground(Color.WHITE);
 		TurnInfo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		TurnInfo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -284,10 +187,8 @@ public class GamesFrame extends JFrame {
 	
 	public void btnActionPerformed(javax.swing.JButton btn)
 	{
-	
 		if(btn.getText() == null)
-		{
-			
+		{	
 			btn.setText(startGame);
 			btn.setFont(new Font("Tahoma", Font.BOLD, -5));
 			btn.setHideActionText(true);
@@ -299,18 +200,6 @@ public class GamesFrame extends JFrame {
 			{
 				btn.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
 			}
-
-	        
-	        if(startGame.equalsIgnoreCase("X"))
-	        {
-	           btn.setForeground(new Color(33, 66, 82));
-	        }
-	        else
-	        {
-	            btn.setForeground(new Color(33, 66, 82));
-	        }
-	        
-	        
 	        
 	        this.choosePlayer();
 	        this.findResult();
@@ -319,99 +208,99 @@ public class GamesFrame extends JFrame {
 	
 	public void findResult()
 	{
-		String b1 = btn1.getText();
-		String b2 = btn2.getText();
-		String b3 = btn3.getText();
-		String b4 = btn4.getText();
-		String b5 = btn5.getText();
-		String b6 = btn6.getText();
-		String b7 = btn7.getText();
-		String b8 = btn8.getText();
-		String b9 = btn9.getText();
+		String b1 = btn[0].getText();
+		String b2 = btn[1].getText();
+		String b3 = btn[2].getText();
+		String b4 = btn[3].getText();
+		String b5 = btn[4].getText();
+		String b6 = btn[5].getText();
+		String b7 = btn[6].getText();
+		String b8 = btn[7].getText();
+		String b9 = btn[8].getText();
 		
-		// PLAYER X CODING
+		// PLAYER X CHECK
         
         if(b1 == ("X") && b2 ==("X") && b3 == ("X"))
         {
-        	this.checkWinner(player1, btn1, btn2, btn3);
+        	this.checkWinner(player1, btn[0], btn[1], btn[2]);
         }
         
         else if(b4 == ("X") && b5 ==("X") && b6 == ("X"))
         {
-        	this.checkWinner(player1, btn4, btn5, btn6);
+        	this.checkWinner(player1, btn[3], btn[4], btn[5]);
         }
          
         else if(b7 == ("X") && b8 ==("X") && b9 == ("X"))
         {
-        	this.checkWinner(player1, btn7, btn8, btn9);
+        	this.checkWinner(player1, btn[6], btn[7], btn[8]);
         }
         
         else if(b1 == ("X") && b4 ==("X") && b7 == ("X"))
         {
-        	this.checkWinner(player1, btn1, btn4, btn7);
+        	this.checkWinner(player1, btn[0], btn[3], btn[6]);
         }
         
         else if(b2 == ("X") && b5 ==("X") && b8 == ("X"))
         {
-        	this.checkWinner(player1, btn2, btn5, btn8);
+        	this.checkWinner(player1, btn[1], btn[4], btn[7]);
         }
         else if(b3 == ("X") && b6 ==("X") && b9 == ("X"))
         {
-        	this.checkWinner(player1, btn3, btn6, btn9);
+        	this.checkWinner(player1, btn[2], btn[5], btn[8]);
         }
         
         
         else if(b1 == ("X") && b5 ==("X") && b9 == ("X"))
         {
-        	this.checkWinner(player1, btn1, btn5, btn9);
+        	this.checkWinner(player1, btn[0], btn[4], btn[8]);
         }
         
         else if(b3 == ("X") && b5 ==("X") && b7 == ("X"))
         {
-        	this.checkWinner(player1, btn3, btn5, btn7);
+        	this.checkWinner(player1, btn[2], btn[4], btn[6]);
         }
         
-        // PLAYER O CODING
+        // PLAYER O CHECK
         
         else if(b1 == ("O") && b2 ==("O") && b3 == ("O"))
         {
-        	this.checkWinner(player2, btn1, btn2, btn3);
+        	this.checkWinner(player2, btn[0], btn[1], btn[2]);
             
         }
         
         else if(b4 == ("O") && b5 ==("O") && b6 == ("O"))
         {
-        	this.checkWinner(player2, btn4, btn5, btn6);
+        	this.checkWinner(player2, btn[3], btn[4], btn[5]);
         }
          
         else if(b7 == ("O") && b8 ==("O") && b9 == ("O"))
         {
-        	this.checkWinner(player2, btn7, btn8, btn9);
+        	this.checkWinner(player2, btn[6], btn[7], btn[8]);
         }
         
         else if(b1 == ("O") && b4 ==("O") && b7 == ("O"))
         {
-        	this.checkWinner(player2, btn1, btn4, btn7);
+        	this.checkWinner(player2, btn[0], btn[3], btn[6]);
         }
         
         else if(b2 == ("O") && b5 ==("O") && b8 == ("O"))
         {
-        	this.checkWinner(player2, btn2, btn5, btn8);
+        	this.checkWinner(player2, btn[1], btn[4], btn[7]);
         }
         
         else if(b3 == ("O") && b6 ==("O") && b9 == ("O"))
         {
-        	this.checkWinner(player2, btn3, btn6, btn9);
+        	this.checkWinner(player2, btn[2], btn[5], btn[8]);
         }   
         
         else if(b1 == ("O") && b5 ==("O") && b9 == ("O"))
         {
-        	this.checkWinner(player2, btn1, btn5, btn9);
+        	this.checkWinner(player2, btn[0], btn[4], btn[8]);
         }
         
         else if(b3 == ("O") && b5 ==("O") && b7 == ("O"))
         {
-        	this.checkWinner(player2, btn3, btn5, btn7);
+        	this.checkWinner(player2, btn[2], btn[4], btn[6]);
         }
         
         else if(b1 != null && b2 != null && b3 != null && b4 != null && b5 != null && b6 != null && b7 != null && b8 != null && b9 != null)
@@ -444,34 +333,11 @@ public class GamesFrame extends JFrame {
 	
 	public void playAgain()
 	{
-		btn1.setText(null);
-		btn2.setText(null);
-		btn3.setText(null);
-		btn4.setText(null);
-		btn5.setText(null);
-		btn6.setText(null);
-		btn7.setText(null);
-		btn8.setText(null);
-		btn9.setText(null);
-
-		btn1.setIcon(null);
-		btn2.setIcon(null);
-		btn3.setIcon(null);
-		btn4.setIcon(null);
-		btn5.setIcon(null);
-		btn6.setIcon(null);
-		btn7.setIcon(null);
-		btn8.setIcon(null);
-		btn9.setIcon(null);
-		
-		btn1.setBackground(new Color(224, 90, 71));
-		btn2.setBackground(new Color(224, 90, 71));
-		btn3.setBackground(new Color(224, 90, 71));
-		btn4.setBackground(new Color(224, 90, 71));
-		btn5.setBackground(new Color(224, 90, 71));
-		btn6.setBackground(new Color(224, 90, 71));
-		btn7.setBackground(new Color(224, 90, 71));
-		btn8.setBackground(new Color(224, 90, 71));
-		btn9.setBackground(new Color(224, 90, 71));
+		for (int i=0; i < 9; i++)
+		{
+			btn[i].setText(null);
+			btn[i].setIcon(null);
+			btn[i].setBackground(new Color(224, 90, 71));
+		}
 	}
 }

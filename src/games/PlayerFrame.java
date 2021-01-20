@@ -115,7 +115,7 @@ public class PlayerFrame extends JFrame {
 					JFrame frameWarning = new JFrame("warning");
 					JOptionPane.showConfirmDialog(frameWarning,"Player Name Can't be Null", "Tic Tac Toe", JOptionPane.CLOSED_OPTION);
 				}
-				if (ProfilePlayer1Name.getText().equalsIgnoreCase(ProfilePlayer2Name.getText()))
+				else if (ProfilePlayer1Name.getText().equalsIgnoreCase(ProfilePlayer2Name.getText()))
 				{
 					JFrame frameWarning = new JFrame("warning");
 					JOptionPane.showConfirmDialog(frameWarning,"Player Name Can't be Same", "Tic Tac Toe", JOptionPane.CLOSED_OPTION);
