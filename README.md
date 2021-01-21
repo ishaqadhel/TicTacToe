@@ -24,8 +24,17 @@ Tic Tac Toe adalah game sederhana yang dimainkan biasanya di atas kertas dengan 
 - GamesFrame
 
 ### Class : 
+- Main
 - Player
 - Human (Extends Player)
 
 ## Program Flow
-- 
+- Start Main to initiate program
+- From Main it will open Home Frame
+- From Home Frame click 'PLAY' Button to go to Player Frame
+- In Player Frame insert your name to play, after that click 'PLAY' Button
+- After you click 'PLAY' Button in Player Frame the program will open GameFrame
+- Happy Playing!
+
+## Disadvantages
+- From one menu to another still using JFrame not JPanel
