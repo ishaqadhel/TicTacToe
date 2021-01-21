@@ -106,19 +106,19 @@ public class PlayerFrame extends JFrame {
 		ProfilePlayer1.add(Name1Title);
 		
 		// Back To Main Button
-		JButton BackToMain = new JButton("Back To Main\r\n");
-		BackToMain.setForeground(Color.WHITE);
-		BackToMain.setFont(new Font("Tahoma", Font.BOLD, 15));
-		BackToMain.setBackground(new Color(224, 90, 71));
-		BackToMain.setBounds(134, 336, 200, 60);
-		BackToMain.addActionListener(new ActionListener() {
+		JButton BackToMode = new JButton("Back To Mode\r\n");
+		BackToMode.setForeground(Color.WHITE);
+		BackToMode.setFont(new Font("Tahoma", Font.BOLD, 15));
+		BackToMode.setBackground(new Color(224, 90, 71));
+		BackToMode.setBounds(134, 336, 200, 60);
+		BackToMode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Home PlayerHome = new Home();
-				PlayerHome.setVisible(true);
+				ModeFrame ModeFrame = new ModeFrame();
+				ModeFrame.setVisible(true);
 			}
 		});
-		contentPane.add(BackToMain);
+		contentPane.add(BackToMode);
 		
 		// Play Button
 		JButton Play = new JButton("Play");

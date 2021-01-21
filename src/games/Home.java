@@ -59,8 +59,8 @@ public class Home extends JFrame {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				PlayerFrame Frame = new PlayerFrame();
-				Frame.setVisible(true);
+				ModeFrame ModeFrame = new ModeFrame();
+				ModeFrame.setVisible(true);
 			}
 		});
 		btnPlay.setBounds(90, 264, 100, 40);
