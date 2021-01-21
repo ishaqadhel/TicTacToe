@@ -6,7 +6,7 @@ public class Main {
 	/**
 	 * Launch the application.
 	 * Created By BME MEMBARA
-	 * Code By Bill & Ishaq
+	 * @autho Ishaq Adheltyo & Bill Harit Yafi
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

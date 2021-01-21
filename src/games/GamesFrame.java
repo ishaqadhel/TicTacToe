@@ -14,10 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
 public class GamesFrame extends JFrame {
+	
 	private JPanel contentPane;
 	
 	private javax.swing.JLabel score1;
@@ -31,9 +34,10 @@ public class GamesFrame extends JFrame {
     Human player2 = new Human(null, 0);
     
     private JLabel TTTBackground;
-    private JLabel lblPlayer2;
-	JLabel TurnInfo = new JLabel("Turn : " + startGame);
+    private JLabel Player2Name;
 
+	JLabel TurnInfo = new JLabel("Turn : " + startGame);
+		
     private void gameScore()
     {
     	score1.setText(String.valueOf(player1.getScore()));
@@ -54,9 +58,16 @@ public class GamesFrame extends JFrame {
     }
     
 	/**
-	 * Create the frame.
+	 * Create the Game frame.
 	 */
+    
 	public GamesFrame(String Player1, String Player2) {
+		
+		// Title Bar
+		setTitle("Tic Tac Toe");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/image/icon.png")));
+				
+		// Frame Setting
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 705, 525);
@@ -67,6 +78,7 @@ public class GamesFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// Board
 		for(int i = 0; i < 9; i++)
 		{
 			btn[i] = new JButton("");
@@ -80,7 +92,6 @@ public class GamesFrame extends JFrame {
 				}
 			});
 		}
-		
 		btn[0].setBounds(92, 86, 85, 85);
 		btn[1].setBounds(204, 86, 85, 85);
 		btn[2].setBounds(318, 86, 85, 85);
@@ -91,6 +102,7 @@ public class GamesFrame extends JFrame {
 		btn[7].setBounds(204, 292, 85, 85);
 		btn[8].setBounds(318, 292, 85, 85);
 		
+		// Play Again Button
 		JButton btnPlayAgain = new JButton("Play Again");
 		btnPlayAgain.setForeground(Color.WHITE);
 		btnPlayAgain.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -108,6 +120,7 @@ public class GamesFrame extends JFrame {
 		btnPlayAgain.setBounds(176, 410, 131, 34);
 		contentPane.add(btnPlayAgain);
 		
+		// Exit Button
 		JButton btnExit = new JButton("Exit");
 		btnExit.setForeground(Color.WHITE);
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -115,9 +128,11 @@ public class GamesFrame extends JFrame {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFrame frame = new JFrame("exit");
+				// Background
 				
 				if(JOptionPane.showConfirmDialog(frame, "Are you sure want to exit game?", "Tic Tac Toe", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION)
 				{
+					
 					System.exit(0);
 				}
 			}
@@ -125,62 +140,73 @@ public class GamesFrame extends JFrame {
 		btnExit.setBounds(336, 410, 131, 34);
 		contentPane.add(btnExit);
 		
-		JPanel panel1 = new JPanel();
-		panel1.setForeground(Color.WHITE);
-		panel1.setBackground(new Color(224, 90, 71));
-		panel1.setOpaque(true);
-		panel1.setBounds(445, 86, 150, 137);
-		contentPane.add(panel1);
-		panel1.setLayout(null);
+		// Scoreboard X
+			// Scoreboard X Box
+		JPanel ScoreboardX = new JPanel();
+		ScoreboardX.setForeground(Color.WHITE);
+		ScoreboardX.setBackground(new Color(224, 90, 71));
+		ScoreboardX.setOpaque(true);
+		ScoreboardX.setBounds(445, 86, 150, 137);
+		contentPane.add(ScoreboardX);
+		ScoreboardX.setLayout(null);
 
-		JLabel lblPlayer1 = new JLabel(Player1 + " (X) : ");
-		lblPlayer1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblPlayer1.setForeground(Color.WHITE);
-		lblPlayer1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPlayer1.setBounds(0, 0, 150, 50);
-		panel1.add(lblPlayer1);
+			// Scoreboard X Name
+		JLabel Player1Name = new JLabel(Player1 + " (X) : ");
+		Player1Name.setFont(new Font("Tahoma", Font.BOLD, 15));
+		Player1Name.setForeground(Color.WHITE);
+		Player1Name.setHorizontalAlignment(SwingConstants.CENTER);
+		Player1Name.setBounds(0, 0, 150, 50);
+		ScoreboardX.add(Player1Name);
 		
+			// Scoreboard X Score
 		score1 = new JLabel("0");
 		score1.setBackground(Color.WHITE);
 		score1.setFont(new Font("Tahoma", Font.BOLD, 50));
 		score1.setHorizontalAlignment(SwingConstants.CENTER);
 		score1.setBounds(0, 61, 150, 75);
 		score1.setOpaque(true);
-		panel1.add(score1);
+		ScoreboardX.add(score1);
 		
-		JPanel panel2 = new JPanel();
-		panel2.setBounds(445, 237, 150, 140);
-		panel2.setBackground(new Color(224, 90, 71));
-		panel2.setOpaque(true);
-		contentPane.add(panel2);
-		panel2.setLayout(null);
+		// Scoreboard Y
+			// Scoreboard Y Box
+		JPanel ScoreboardY = new JPanel();
+		ScoreboardY.setBounds(445, 237, 150, 140);
+		ScoreboardY.setBackground(new Color(224, 90, 71));
+		ScoreboardY.setOpaque(true);
+		contentPane.add(ScoreboardY);
+		ScoreboardY.setLayout(null);
 		
+			// Scoreboard Y Score
 		score2 = new JLabel("0");
 		score2.setBackground(Color.WHITE);
 		score2.setHorizontalAlignment(SwingConstants.CENTER);
 		score2.setFont(new Font("Tahoma", Font.BOLD, 50));
 		score2.setBounds(0, 65, 150, 75);
 		score2.setOpaque(true);
-		panel2.add(score2);
+		ScoreboardY.add(score2);
 		
-		lblPlayer2 = new JLabel(Player2 + " (O) : ");
-		lblPlayer2.setForeground(Color.WHITE);
-		lblPlayer2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblPlayer2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPlayer2.setBounds(0, 0, 150, 50);
-		panel2.add(lblPlayer2);
+			// Scoreboard Y Name
+		Player2Name = new JLabel(Player2 + " (O) : ");
+		Player2Name.setForeground(Color.WHITE);
+		Player2Name.setFont(new Font("Tahoma", Font.BOLD, 15));
+		Player2Name.setHorizontalAlignment(SwingConstants.CENTER);
+		Player2Name.setBounds(0, 0, 150, 50);
+		ScoreboardY.add(Player2Name);
 		
+		// Turn to move Info Label
 		TurnInfo.setForeground(Color.WHITE);
 		TurnInfo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		TurnInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		TurnInfo.setBounds(92, 31, 311, 44);
 		contentPane.add(TurnInfo);
 		
+		// Background
 		TTTBackground = new JLabel("New label");
-		TTTBackground.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/rsz_1610982588607.png")));
+		TTTBackground.setIcon(new ImageIcon(GamesFrame.class.getResource("/image/background.png")));
 		TTTBackground.setBounds(0, 0, 700, 500);
 		contentPane.add(TTTBackground);
 		
+		// Player Name Input
 		player1.setName(Player1);
 		player2.setName(Player2);
 	}
@@ -194,11 +220,11 @@ public class GamesFrame extends JFrame {
 			btn.setHideActionText(true);
 			if(startGame=="X")
 			{
-				btn.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/cross.png")));
+				btn.setIcon(new ImageIcon(GamesFrame.class.getResource("/image/cross.png")));
 			}
 			else
 			{
-				btn.setIcon(new ImageIcon(GamesFrame.class.getResource("/games/circle.png")));
+				btn.setIcon(new ImageIcon(GamesFrame.class.getResource("/image/circle.png")));
 			}
 	        
 	        this.choosePlayer();
