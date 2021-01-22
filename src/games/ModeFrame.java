@@ -45,7 +45,7 @@ public class ModeFrame extends JFrame {
 		BackToMain.setForeground(Color.WHITE);
 		BackToMain.setFont(new Font("Tahoma", Font.BOLD, 15));
 		BackToMain.setBackground(new Color(224, 90, 71));
-		BackToMain.setBounds(277, 375, 142, 40);
+		BackToMain.setBounds(277, 291, 142, 40);
 		BackToMain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -59,14 +59,18 @@ public class ModeFrame extends JFrame {
 		VsPlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				PlayerFrame PlayerFrame = new PlayerFrame();
-				PlayerFrame.setVisible(true);
+				try {
+					PlayerFrame PlayerFrame = new PlayerFrame();
+					PlayerFrame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		VsPlayer.setForeground(Color.WHITE);
 		VsPlayer.setFont(new Font("Dialog", Font.BOLD, 15));
 		VsPlayer.setBackground(new Color(224, 90, 71));
-		VsPlayer.setBounds(390, 304, 142, 40);
+		VsPlayer.setBounds(277, 230, 142, 40);
 		contentPane.add(VsPlayer);
 		contentPane.add(BackToMain);
 		
@@ -75,14 +79,19 @@ public class ModeFrame extends JFrame {
 		VsComputer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				CompFrame CompFrame = new CompFrame();
-				CompFrame.setVisible(true);
+				try {
+					CompFrame CompFrame = new CompFrame();
+					CompFrame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
+		
 		VsComputer.setForeground(Color.WHITE);
 		VsComputer.setFont(new Font("Tahoma", Font.BOLD, 15));
 		VsComputer.setBackground(new Color(224, 90, 71));
-		VsComputer.setBounds(171, 304, 142, 40);
+		VsComputer.setBounds(277, 166, 142, 40);
 		contentPane.add(VsComputer);
 				
 		// Background

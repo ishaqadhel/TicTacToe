@@ -19,5 +19,4 @@ public class Human extends Player{
 	{
 		return this.name;
 	}
-	
 }

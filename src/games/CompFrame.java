@@ -82,8 +82,12 @@ public class CompFrame extends JFrame {
 				BackToMain.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						dispose();
-						ModeFrame ModeFrame = new ModeFrame();
-						ModeFrame.setVisible(true);
+						try {
+							ModeFrame ModeFrame = new ModeFrame();
+							ModeFrame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}	
 					}
 				});
 				contentPane.add(BackToMain);
@@ -91,7 +95,7 @@ public class CompFrame extends JFrame {
 				// Play Button
 				JButton Play = new JButton("Play");
 				Play.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+					public void actionPerformed(ActionEvent arg0) {
 						if ( ProfilePlayer1Name.getText().trim().length() == 0)
 						{
 							JFrame frameWarning = new JFrame("warning");
@@ -100,8 +104,12 @@ public class CompFrame extends JFrame {
 						else
 						{
 							dispose();
-							GamesCompFrame NewGames = new GamesCompFrame(ProfilePlayer1Name.getText());
-							NewGames.setVisible(true);
+							try {
+								GamesCompFrame NewGames = new GamesCompFrame(ProfilePlayer1Name.getText());
+								NewGames.setVisible(true);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}	
 						}
 					}
 				});

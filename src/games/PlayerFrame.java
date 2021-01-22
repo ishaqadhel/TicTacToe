@@ -123,7 +123,7 @@ public class PlayerFrame extends JFrame {
 		// Play Button
 		JButton Play = new JButton("Play");
 		Play.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				if ( ProfilePlayer1Name.getText().trim().length() == 0 || ProfilePlayer2Name.getText().trim().length() == 0)
 				{
 					JFrame frameWarning = new JFrame("warning");
@@ -137,8 +137,12 @@ public class PlayerFrame extends JFrame {
 				else
 				{
 					dispose();
-					GamesFrame NewGames = new GamesFrame(ProfilePlayer1Name.getText(), ProfilePlayer2Name.getText());
-					NewGames.setVisible(true);
+					try {
+						GamesFrame NewGames = new GamesFrame(ProfilePlayer1Name.getText(), ProfilePlayer2Name.getText());
+						NewGames.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		});
