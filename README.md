@@ -1,7 +1,7 @@
 # TicTacToe
 
-## Game Apa Ini ?
-Tic Tac Toe adalah game sederhana yang dimainkan biasanya di atas kertas dengan cara menandai X / O  di ruang grid 3x3. Pemenang game ini adalah pemain yang menandai tiga tanda beruntun secara horizontal / vertikal /  diagonal.
+## About
+Tic Tac Toe is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. This Games created by using Java Language Programming (OOP).
 
 ## Features
 - Insert Name
