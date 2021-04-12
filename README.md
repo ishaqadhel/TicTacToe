@@ -1,7 +1,7 @@
 # TicTacToe
 
 ## About
-Tic Tac Toe is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. This Games created by using Java Language Programming (OOP).
+Tic Tac Toe is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. This game created by using Java Language Programming (OOP).
 
 ## Features
 - Insert Name
