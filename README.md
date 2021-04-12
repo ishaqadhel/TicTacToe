@@ -1,8 +1,4 @@
-# TicTacToe - Final Project PBO G 2020
-
-## Anggota Kelompok
-- Bill Harit Yafi (05111940000114)
-- Ishaq Adheltyo (05111940000167)
+# TicTacToe
 
 ## Game Apa Ini ?
 Tic Tac Toe adalah game sederhana yang dimainkan biasanya di atas kertas dengan cara menandai X / O  di ruang grid 3x3. Pemenang game ini adalah pemain yang menandai tiga tanda beruntun secara horizontal / vertikal /  diagonal.
